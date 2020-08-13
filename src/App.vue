@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <HelloWorld></HelloWorld><!-- //使用组件 -->
+	  <div class="content">
+	        <router-view></router-view>
+	    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 export default {
-  name: 'App',
-  components:{
-    HelloWorld  //映射组件
-  }
+  name: 'App'
 }
 </script>
 
