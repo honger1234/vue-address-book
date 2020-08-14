@@ -47,6 +47,7 @@
             axios.post(url,{"username":this.username,"password":this.password})
               .then(response=>{
 				  if(response.data.code==10000){
+					  window.localStorage.setItem("token",response.data.data.token)
 					  this.$router.replace('/addressBook');
 				  }
                 console.log(response.data)
