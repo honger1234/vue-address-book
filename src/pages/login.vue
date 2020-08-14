@@ -4,7 +4,7 @@
       <form action="" class="login-cont">
         <ul>
           <li>
-            <input v-model="userName" type="text" placeholder="请输入用户名：">
+            <input v-model="username" type="text" placeholder="请输入用户名：">
           </li>
           <li>
             <input v-model="password" type="password" placeholder="请输入密码：">
@@ -21,18 +21,19 @@
 
 <script>
     import axios from 'axios'
+	import AddressBook from '@/pages/AddressBook.vue' 
     export default {
         name: "Login",
         data(){
           return{
-            userName:'',
+            username:'',
             password:'',
             errorInfo:''
           }
         },
         methods:{
           submit(){
-            if(this.userName.trim()==''){
+            if(this.username.trim()==''){
               this.errorInfo="用户名不能为空！";
               return;
             }
@@ -40,10 +41,15 @@
               this.errorInfo="密码不能为空！";
               return;
             }
-            console.log('ok')
-            axios.post('http://www.open1111.com/login',{"userName":this.userName,"password":this.password})
+			console.log('ok')
+			let url="/api/sysUser/login";
+			console.log(url);
+            axios.post(url,{"username":this.username,"password":this.password})
               .then(response=>{
-                console.log(response)
+				  if(response.data.code==10000){
+					  this.$router.replace('/addressBook');
+				  }
+                console.log(response.data)
               }).catch(error=>{
                 this.errorInfo=error;
             })

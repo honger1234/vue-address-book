@@ -55,19 +55,19 @@ module.exports = {
         port: 8766,
         https: false,
         hotOnly: false,
-        // proxy: { // 设置代理
-        //     '/api': {
-        //         target: 'http://www.xxxxx.com/',
-        //         changeOrigin: true,
-        //         pathRewrite: {
-        //             '^/api': '/api'
-        //         }
-        //     }
-        // },
+        proxy: { // 设置代理
+            '/api': {
+                target: 'http://localhost:8866',//接口域名
+                changeOrigin: true,//是否跨域
+                pathRewrite: {
+                    '^/api': '/'//路径重置
+                }
+            }
+        },
         disableHostCheck: true
     },
     // 第三方插件配置
     pluginOptions: {
         // ...
-    }
+    },
 }
