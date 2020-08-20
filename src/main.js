@@ -3,6 +3,8 @@ import App from './App.vue'
 import '@/assets/styles/border.css'
 import '@/assets/styles/reset.css'
 import router from './router'//相当于import router from './router/index.js'
+import '@/assets/styles/iconfont.css'//
+// import '//at.alicdn.com/t/font_2018600_z02o6morqi.css'
 
 
 Vue.config.productionTip = false
