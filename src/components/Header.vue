@@ -1,7 +1,10 @@
 <template>
     <div class="header">
       通讯录
-      <div class="iconfont add-icon">&#xe60f;</div>
+	  <router-link tag="div" to="/add">
+		  <div class="iconfont add-icon">&#xe60f;</div>
+	  </router-link>
+      
     </div>
 </template>
 
