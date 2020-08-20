@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<phone-book-header></phone-book-header>
-		<phone-book-search></phone-book-search>
+		<phone-book-search :addressBook="addressBook"></phone-book-search>
 		<phone-book-list :addressBook="addressBook" :letter=letter></phone-book-list>
 		<Alphabet :addressBook="addressBook" @letterChange=letterChange></Alphabet>
 	</div>
