@@ -1,21 +1,27 @@
 <template>
-    <div class="list">
-      <div class="phoneBook" v-for="(item,key) in addressBook" :key="key">
-		  
-        <div class="title">{{key}}</div>
-        <div class="item" v-for="item2 in item" :key="item2.id">
-          <img src="item2.image" >
-          <div class="content border-bottom">{{item2.name}}</div>
-        </div>
-      </div>
-    </div>
+	<div class="list" ref="wrapper">
+		<div>
+			<div class="phoneBook" v-for="(item,key) in addressBook" :key="key">
+
+				<div class="title">{{key}}</div>
+				<div class="item" v-for="item2 in item" :key="item2.id">
+					<img src="item2.image">
+					<div class="content border-bottom">{{item2.name}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-    export default {
-        name: "List",
-		props:['addressBook']
-    }
+	import BScroll from 'better-scroll'
+	export default {
+		name: "List",
+		props: ['addressBook'],
+		mounted() {
+			this.scroll = new BScroll(this.$refs.wrapper);
+		}
+	}
 </script>
 
 <style lang="stylus" scoped>
