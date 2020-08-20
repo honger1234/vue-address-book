@@ -1,7 +1,7 @@
 <template>
 	<div class="list" ref="wrapper">
 		<div>
-			<div class="phoneBook" v-for="(item,key) in addressBook" :key="key">
+			<div class="phoneBook" v-for="(item,key) in addressBook" :key="key" :ref="key">
 
 				<div class="title">{{key}}</div>
 				<div class="item" v-for="item2 in item" :key="item2.id">
@@ -17,9 +17,22 @@
 	import BScroll from 'better-scroll'
 	export default {
 		name: "List",
-		props: ['addressBook'],
+		props: ['addressBook','letter'],
 		mounted() {
 			this.scroll = new BScroll(this.$refs.wrapper);
+		},
+		watch:{
+			letter(){
+				if(this.letter){
+					const element=this.$refs[this.letter][0];
+					console.log(element);
+					this.scroll.scrollToElement(element);
+					// this.scroll.scrollTo(element);
+					// this.scroll.scrollIntoViewIfNeeded(element);
+					// this.scroll.toElement(element);
+					// this.scroll.scrollingElement(element);
+				}
+			}
 		}
 	}
 </script>

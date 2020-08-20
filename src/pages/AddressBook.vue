@@ -2,8 +2,8 @@
 	<div>
 		<phone-book-header></phone-book-header>
 		<phone-book-search></phone-book-search>
-		<phone-book-list :addressBook="addressBook"></phone-book-list>
-		<Alphabet :addressBook="addressBook"></Alphabet>
+		<phone-book-list :addressBook="addressBook" :letter=letter></phone-book-list>
+		<Alphabet :addressBook="addressBook" @letterChange=letterChange></Alphabet>
 	</div>
 </template>
 
@@ -18,7 +18,7 @@
 		data(){
 			return{
 				addressBook:{},
-				aaa:'属性'
+				letter:""
 			}
 		},
 		components: {
@@ -42,6 +42,10 @@
 					}).catch(error => {
 						console.log(error)
 					})
+			},
+			letterChange(letter){
+				console.log("传来的字母："+letter);
+				this.letter=letter;
 			}
 		},
 		mounted() {
