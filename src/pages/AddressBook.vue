@@ -3,6 +3,7 @@
 		<phone-book-header></phone-book-header>
 		<phone-book-search></phone-book-search>
 		<phone-book-list :addressBook="addressBook"></phone-book-list>
+		<Alphabet :addressBook="addressBook"></Alphabet>
 	</div>
 </template>
 
@@ -11,6 +12,7 @@
 	import PhoneBookHeader from '../components/Header'
 	import PhoneBookSearch from '../components/Search.vue'
 	import PhoneBookList from '../components/List'
+	import Alphabet from '../components/Alphabet.vue'
 	export default {
 		name: 'AddressBook',
 		data(){
@@ -22,7 +24,8 @@
 		components: {
 			PhoneBookHeader,
 			PhoneBookSearch,
-			PhoneBookList
+			PhoneBookList,
+			Alphabet
 		},
 		methods: {
 			getPhoneBooks() {
