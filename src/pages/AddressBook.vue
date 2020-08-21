@@ -9,6 +9,7 @@
 
 <script>
 	import axios from 'axios'
+	import PubSub from 'pubsub-js'
 	import PhoneBookHeader from '../components/Header'
 	import PhoneBookSearch from '../components/Search.vue'
 	import PhoneBookList from '../components/List'
@@ -51,6 +52,11 @@
 		mounted() {
 			// console.log(this.aaa);
 			this.getPhoneBooks(); // 加载所有电话簿信息
+			//订阅getPhoneBooks方法
+			PubSub.subscribe('refreshAddressBook',(msg,data)=>{
+				console.log("订阅getPhoneBooks()方法");
+				this.getPhoneBooks();
+			})
 		}
 	}
 </script>

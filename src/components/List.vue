@@ -5,7 +5,7 @@
 
 				<div class="title">{{key}}</div>
 				<div class="item" v-for="item2 in item" :key="item2.id">
-					<img src="item2.image">
+					<img :src="item2.image">
 					<div class="content border-bottom">{{item2.name}}</div>
 				</div>
 			</div>
