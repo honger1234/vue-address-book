@@ -57,7 +57,7 @@ module.exports = {
         hotOnly: false,
         proxy: { // 设置代理
             '/api': {
-                target: 'http://localhost:8866',//接口域名
+                target: 'http://112.74.164.135:8866',//接口域名
                 changeOrigin: true,//是否跨域
                 pathRewrite: {
                     '^/api': '/'//路径重置
