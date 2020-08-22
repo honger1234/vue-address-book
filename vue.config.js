@@ -51,13 +51,13 @@ module.exports = {
     // webpack-dev-server 相关配置
     devServer: {
         open: process.platform === 'vue',
-        host: '112.74.164.135',
+        host: 'localhost',
         port: 8766,
         https: false,
         hotOnly: false,
         proxy: { // 设置代理
             '/api': {
-                target: 'http://112.74.164.135:8866',//接口域名
+                target: 'http://localhost:8767',//接口域名
                 changeOrigin: true,//是否跨域
                 pathRewrite: {
                     '^/api': '/'//路径重置
