@@ -107,18 +107,35 @@
           alert('固定电话有误，请重填');
           return false;
         }
-        axios.post(url,{"name":this.phoneBook.name,"phoneNumber":this.phoneBook.phoneNumber,"teleNumber":this.phoneBook.teleNumber,"workAddress":this.phoneBook.workAddress,"homeAddress":this.phoneBook.homeAddress,"image":this.phoneBook.image,"remark":this.phoneBook.remark,"image":this.phoneBook.image})
-          .then(response=>{
-            if(response.data.code==0){
-              alert("修改成功")
-              PubSub.publish('refreshPhoneBook','')
-              this.$router.replace('/phoneBook')
-            }else{
-              alert(response.data.msg)
-            }
-          }).catch(error=>{
-          alert(error)
-        })
+		let mfile = this.$refs.file.files[0];
+		let param = new FormData();
+		param.append("mFile", mfile,mfile.name);
+		param.append("id", this.phoneBook.id);
+		param.append("name", this.phoneBook.name);
+		param.append("phoneNumber", this.phoneBook.phoneNumber);
+		param.append("teleNumber", this.phoneBook.teleNumber);
+		param.append("workAddress", this.phoneBook.workAddress);
+		param.append("homeAddress", this.phoneBook.homeAddress);
+		param.append("remark", this.phoneBook.remark);
+		let config = {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+				'token': token
+			}
+		};
+        axios.post(url, param,config)
+        	.then(response => {
+        		if (response.data.code == 10000) {
+        			alert("修改成功");
+        			PubSub.publish('refreshAddressBook');
+        			this.$router.replace('/addressBook');
+        			
+        		} else {
+        			alert(response.data.msg)
+        		}
+        	}).catch(error => {
+        		alert(error)
+        	})
       },
       upload(e){
         let file=e.target.files[0];
