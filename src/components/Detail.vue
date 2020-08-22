@@ -106,9 +106,10 @@
         }
 		let mfile = this.$refs.file.files[0];
 		let param = new FormData();
-		param.append("mFile", mfile,mfile.name);
+		param.append("mFile", mfile);
 		param.append("id", this.phoneBook.id);
 		param.append("name", this.phoneBook.name);
+		param.append("image", this.phoneBook.image);
 		param.append("phoneNumber", this.phoneBook.phoneNumber);
 		param.append("teleNumber", this.phoneBook.teleNumber);
 		param.append("workAddress", this.phoneBook.workAddress);

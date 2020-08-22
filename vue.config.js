@@ -52,12 +52,12 @@ module.exports = {
     devServer: {
         open: process.platform === 'vue',
         host: 'localhost',
-        port: 8767,
+        port: 8766,
         https: false,
         hotOnly: false,
         proxy: { // 设置代理
             '/api': {
-                target: 'http://localhost:8767',//接口域名
+                target: 'http://localhost:8866',//接口域名
                 changeOrigin: true,//是否跨域
                 pathRewrite: {
                     '^/api': '/'//路径重置
