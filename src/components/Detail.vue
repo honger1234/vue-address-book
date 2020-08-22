@@ -137,26 +137,6 @@
         		alert(error)
         	})
       },
-      upload(e){
-        let file=e.target.files[0];
-        let param=new FormData();
-        param.append('file',file,file.name);
-        console.log(param.get('file'));
-
-        let token=window.localStorage.getItem("token")
-        let url=getServerUrl("uploadImage");
-        let config={
-          headers:{'Content-Type':'multipart/form-data','token':token}
-        };
-        axios.post(url,param,config)
-          .then(response=>{
-            if(response.data.code==0){
-              this.phoneBook.image=response.data.data.title;
-            }
-          }).catch(error=>{
-          console.log(error)
-        })
-      },
       getInfo(){
         let url="/api/contact/detail";
         let token=window.localStorage.getItem('token')
@@ -173,7 +153,18 @@
         })
       },
 	  deleteContact(){
-		  
+		  let url="/api/contact/delete";
+		  axios.post(url,{id:this.phoneBook.id}).then(response=>{
+			  if (response.data.code == 10000) {
+			  	alert("删除成功");
+			  	PubSub.publish('refreshAddressBook');
+			  	this.$router.replace('/addressBook');
+			  } else {
+			  	alert(response.data.msg)
+			  }
+		  }).catch(erro=>{
+			  alert(error)
+		  })
 	  }
     },
     mounted() {
