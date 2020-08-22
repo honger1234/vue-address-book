@@ -6,6 +6,7 @@ import Router from 'vue-router'
 import login from '@/pages/login.vue'
 import AddressBook from '@/pages/AddressBook.vue'
 import Add from '../components/Add.vue'
+import Detail from '../components/Detail.vue'
 
 Vue.use(Router); //注册路由
 
@@ -26,6 +27,10 @@ export default new Router({
 		{
 			path: '/add',
 			component: Add
+		},
+		{
+			path: '/detail/:id',
+			component: Detail
 		}
 	]
 })

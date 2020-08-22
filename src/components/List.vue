@@ -4,10 +4,10 @@
 			<div class="phoneBook" v-for="(item,key) in addressBook" :key="key" :ref="key">
 
 				<div class="title">{{key}}</div>
-				<div class="item" v-for="item2 in item" :key="item2.id">
+				<router-link class="item" v-for="item2 in item" :key="item2.id" tag="div" :to="`/detail/${item2.id}`">
 					<img :src="item2.image">
 					<div class="content border-bottom">{{item2.name}}</div>
-				</div>
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 		name: "List",
 		props: ['addressBook','letter'],
 		mounted() {
-			this.scroll = new BScroll(this.$refs.wrapper);
+			this.scroll = new BScroll(this.$refs.wrapper,{click:true});
 		},
 		watch:{
 			letter(){
@@ -27,10 +27,6 @@
 					const element=this.$refs[this.letter][0];
 					console.log(element);
 					this.scroll.scrollToElement(element);
-					// this.scroll.scrollTo(element);
-					// this.scroll.scrollIntoViewIfNeeded(element);
-					// this.scroll.toElement(element);
-					// this.scroll.scrollingElement(element);
 				}
 			}
 		}

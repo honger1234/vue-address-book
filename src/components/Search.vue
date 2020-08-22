@@ -8,7 +8,7 @@
         <div class="item"
              v-for="item of list"
              :key="item.id">
-          <img :src="getImageUrl(item.image)" >
+          <img :src="item.image" >
           <div class="content border-bottom">{{item.name}}</div>
         </div>
         <div class="item center" v-show="!list.length">
@@ -32,9 +32,6 @@
           }
         },
         methods:{
-          getImageUrl(image){
-            return getServerUrl('image/'+image);
-          }
         },
         props:{
           addressBook:Object
