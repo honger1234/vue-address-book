@@ -52,7 +52,7 @@
 
     <gallery
       v-show="showGallery"
-      :galleryImage="galleryImage"
+	  :galleryImage=this.phoneBook.image
       @hideGalleryClick="hideGalleryClick"></gallery>
 
   </div>
@@ -61,8 +61,7 @@
 <script>
   import axios from 'axios'
   import PubSub from 'pubsub-js'
-  // import {getServerUrl} from '@/config/sys.js'
-  // import Gallery from '@/pages/common/Gallery'
+  import Gallery from './Gallery.vue'
 
   export default {
     name: "Detail",
@@ -70,18 +69,16 @@
       return{
         phoneBook:{},
         showGallery:false,
-        galleryImage:''
       }
     },
     components:{
-      // Gallery
+      Gallery
     },
     methods:{
       imageClick(){
         this.$refs.file.click();
       },
       showGalleryClick(){
-        this.galleryImage=getServerUrl('image/'+this.phoneBook.image);
         this.showGallery=true
       },
       hideGalleryClick(){

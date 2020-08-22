@@ -5,12 +5,12 @@
     </div>
     <div class="search-content" ref="search" v-show="keyword">
       <div>
-        <div class="item"
+        <router-link class="item"
              v-for="item of list"
-             :key="item.id">
+             :key="item.id" tag="div" :to="`/detail/${item.id}`">
           <img :src="item.image" >
           <div class="content border-bottom">{{item.name}}</div>
-        </div>
+        </router-link>
         <div class="item center" v-show="!list.length">
            没有找到匹配数据
         </div>
@@ -21,7 +21,6 @@
 
 <script>
   import Bscroll from 'better-scroll'
-  import {getServerUrl} from '@/config/system.js'
 
     export default {
         name: "Search",
@@ -54,7 +53,7 @@
           }
         },
         mounted() {
-          this.scroll=new Bscroll(this.$refs.search)
+          this.scroll=new Bscroll(this.$refs.search,{click:true})
         }
     }
 </script>
