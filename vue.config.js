@@ -52,7 +52,7 @@ module.exports = {
     devServer: {
         open: process.platform === 'vue',
         host: 'localhost',
-        port: 8766,
+        port: 8767,
         https: false,
         hotOnly: false,
         proxy: { // 设置代理
