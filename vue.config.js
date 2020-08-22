@@ -51,7 +51,7 @@ module.exports = {
     // webpack-dev-server 相关配置
     devServer: {
         open: process.platform === 'vue',
-        host: '127.0.0.1',
+        host: '112.74.164.135',
         port: 8766,
         https: false,
         hotOnly: false,
